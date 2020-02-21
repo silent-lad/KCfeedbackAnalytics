@@ -21,7 +21,14 @@ export class LoginComponent implements OnInit {
 
   OnSubmit(){
     let data = this.AuthserviceService.form.value
-    
+    if (data['email'] == ''){
+      alert('Please enter your email');
+      return;
+    }
+    if (data['password'] == ''){
+      alert('Please enter your password');
+      return;
+    }
     this.AuthserviceService.doLogin(data)
     .then(res => {
       console.log(res);
