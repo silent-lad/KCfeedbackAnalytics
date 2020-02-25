@@ -45,6 +45,7 @@ doLogin(data){
       
       console.log(error);
     });
+    
     this.router.navigate(['/home']);
   })
 }

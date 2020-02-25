@@ -14,7 +14,8 @@ import {AuthserviceService} from './services/authservice.service';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
-
+import { ViewContainerComponent } from './view-container/view-container.component';
+import {FeedbackServiceService} from './services/feedback-service.service';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
       LoginComponent,
       HomeComponent,
       NavBarComponent,
-      SideBarComponent
+      SideBarComponent,
+      ViewContainerComponent
    ],
    imports: [
       BrowserModule,
@@ -33,11 +35,11 @@ import { SideBarComponent } from './side-bar/side-bar.component';
       AngularFireModule.initializeApp(environment.firebaseConfig,
       ),
       AngularFirestoreModule,
-      AngularFireAuthModule,
-      
+      AngularFireAuthModule
    ],
    providers: [
-      AuthserviceService
+      AuthserviceService,
+      FeedbackServiceService
    ],
    bootstrap: [
       AppComponent
