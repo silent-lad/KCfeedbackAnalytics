@@ -6,6 +6,7 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './view-container.component.html',
   styleUrls: ['./view-container.component.css']
 })
+
 export class ViewContainerComponent implements OnInit {
 content: string;
   constructor(
@@ -17,6 +18,11 @@ content: string;
     this.route.queryParams.subscribe( value =>{
       this.content = value.page;
     })
+
+    console.log("initAdmin");
+    window["admin"]();
+    window["dashboard"]();
+    window["initAdmin"]();
   }
 
 }

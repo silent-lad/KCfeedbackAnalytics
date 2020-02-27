@@ -25,11 +25,25 @@
                         ],
                         "styles": [
                             "src/styles.css",
-                            "node_modules/materialize-css/dist/css/materialize.css"
+                            "src/app/resources/css/jqvmap.css",
+                            "src/app/resources/css/flag-icon-css/css/flag-icon.min.css",
+                            "src/app/resources/css/admin-materialize.min.css"
+
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
-                            "node_modules/materialize-css/dist/js/materialize.js"
+                            "node_modules/materialize-css/dist/js/materialize.js",
+                            "src/app/resources/js/materialize.min.js",
+                            "src/app/resources/js/jqvmap/jquery.vmap.min.js",
+                            "src/app/resources/js/jqvmap/jquery.vmap.world.js",
+                            "src/app/resources/js/jqvmap/jquery.vmap.sampledata.js",
+                            "src/app/resources/js/Chart.js",
+                            "src/app/resources/js/Chart.Financial.js",
+                            "src/app/resources/js/imagesloaded.pkgd.min.js",
+                            "src/app/resources/js/masonry.pkgd.min.js",
+                            "src/app/resources/js/resources_admin.js",
+                            "src/app/resources/js/page-scripts/dashboard.js",
+                            "src/app/resources/js/init.js"
                         ]
                     },
                     "configurations": {

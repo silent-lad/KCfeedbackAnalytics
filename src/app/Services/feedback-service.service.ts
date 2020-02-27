@@ -13,4 +13,8 @@ constructor( private firestore: AngularFirestore) { }
 getCustomerFeedback() { 
   return this.firestore.collection("Form").snapshotChanges();
 }
+getNumberofForms() { 
+  return this.firestore.collection("Form");
+}
+
 }
