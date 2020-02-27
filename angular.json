@@ -27,7 +27,8 @@
                             "src/styles.css",
                             "src/app/resources/css/jqvmap.css",
                             "src/app/resources/css/flag-icon-css/css/flag-icon.min.css",
-                            "src/app/resources/css/admin-materialize.min.css"
+                            "src/app/resources/css/admin-materialize.min.css",
+                            "src/app/resources/css/datatables.min.css"
 
                         ],
                         "scripts": [
@@ -43,7 +44,9 @@
                             "src/app/resources/js/masonry.pkgd.min.js",
                             "src/app/resources/js/resources_admin.js",
                             "src/app/resources/js/page-scripts/dashboard.js",
-                            "src/app/resources/js/init.js"
+                            "src/app/resources/js/init.js",
+                            "src/app/resources/js/page-scripts/table-custom-elements.js",
+                            "src/app/resources/js/datatables.min.js"
                         ]
                     },
                     "configurations": {
