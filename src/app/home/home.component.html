@@ -11,8 +11,8 @@
                 <div class="card-stacked">
                     <div class="card-metrics card-metrics-static">
                         <div class="card-metric">
-                            <div class="card-metric-title"> Processed Forms</div>
-                            <div class="card-metric-value">$12,476.00</div>
+                            <div class="card-metric-title"> Submitted Forms</div>
+                            <div class="card-metric-value" *ngFor="let form of numberForm">{{form.payload.doc}}</div>
                             <div class="card-metric-change increase">
                                 <i class="material-icons left">keyboard_arrow_up</i> 12%
                             </div>
@@ -174,7 +174,7 @@
 
     <div class="masonry row">
         <div class="col s12">
-            <h2>Secondary Data</h2>
+            <h2>Customers Data</h2>
         </div>
 
         <div class="col m6 s12">
@@ -189,7 +189,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Position</th>
+                            <th>Email</th>
                             <th>Office</th>
                             <th>Age</th>
                             <th>Start date</th>
@@ -197,37 +197,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+                        <tr *ngFor="let order of coffeeOrders">
+                            <td>{{ order.payload.doc.data().Name }}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr *ngFor="let order of coffeeOrders">
+                            <td>{{ order.payload.doc.data().Email}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011/07/25</td>
-                            <td>$170,750</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                            <td>2009/01/12</td>
-                            <td>$86,000</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>2012/03/29</td>
-                            <td>$433,060</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Airi Satou</td>

@@ -19,7 +19,11 @@ const routes: Routes = [
       {path: '', component: HomeComponent, outlet: 'viewOutlet'}
     ]
    
-  }
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
 ];
 
 @NgModule({

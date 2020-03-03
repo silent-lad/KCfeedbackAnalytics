@@ -49,4 +49,10 @@ doLogin(data){
     this.router.navigate(['/home']);
   })
 }
+//SignOut method for logging out from the Angular/Firebase app
+  SignOut() {
+    return firebase.auth().signOut().then(() => {
+      this.router.navigate(['/login']);
+    })
+  }
 }
