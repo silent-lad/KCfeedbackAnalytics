@@ -4,20 +4,34 @@
             <h2>Dashboard</h2>
         </div>
 
+        <div class="col s12">
+            <div class="card">
+
+                <div class="card-action">
+                    <h6 style="text-align:center;">The count of the following items is as of January 24, 2020. Click on three dots for today's values</h6>
+                </div>
+            </div>
+        </div>
 
         <div class="col l3 m6 s12">
 
+
             <div class="card">
-                <div class="card-stacked">
-                    <div class="card-metrics card-metrics-static">
-                        <div class="card-metric">
-                            <div class="card-metric-title"> Submitted Forms</div>
-                            <div class="card-metric-value" *ngFor="let form of numberForm">{{form.payload.doc}}</div>
-                            <div class="card-metric-change increase">
-                                <i class="material-icons left">keyboard_arrow_up</i> 12%
-                            </div>
-                        </div>
-                    </div>
+
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">All Submitted Forms<i class="material-icons right">more_vert</i></span>
+
+                    <h5>Total: {{numberForm}}</h5>
+                    <br> <br>
+                    <p><a href="#">View Monthly Count</a></p>
+
+                </div>
+
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Today's Forms<i class="material-icons right">close</i></span>
+                    <br>
+                    <span class="card-title grey-text text-darken-4">Total: {{numberFormToday}}</span>
+                    <p><a href="#">View Monthly Count</a></p>
                 </div>
                 <div class="card-chart">
                     <canvas id="flush-area-chart-blue" height="100px"></canvas>
@@ -27,62 +41,77 @@
         </div>
         <div class="col l3 m6 s12">
 
+
             <div class="card">
-                <div class="card-stacked">
-                    <div class="card-metrics card-metrics-static">
-                        <div class="card-metric">
-                            <div class="card-metric-title">Graciously Greeted</div>
-                            <div class="card-metric-value">Yes: 11,893/ out of total forms</div>
-                            <div class="card-metric-change increase">
-                                <i class="material-icons left">keyboard_arrow_up</i> 8%
-                            </div>
-                        </div>
-                    </div>
+
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Graciously Greeted<i class="material-icons right">more_vert</i></span>
+
+                    <h5>Yes: {{positiveGreeted}} </h5>
+                    <h5>No: {{negativeGreeted}}</h5>
+                    <p><a href="#">View Monthly Count</a></p>
+                </div>
+
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Today's Forms<i class="material-icons right">close</i></span>
+                    <br>
+                    <span class="card-title grey-text text-darken-4">Total: {{numberFormToday}}</span>
+                    <p><a href="#">View Monthly Count</a></p>
                 </div>
                 <div class="card-chart">
-                    <canvas id="flush-area-chart-yellow" height="100px"></canvas>
+                    <canvas id="flush-area-chart-pink" height="100px"></canvas>
                 </div>
             </div>
 
         </div>
         <div class="col l3 m6 s12">
-
             <div class="card">
-                <div class="card-stacked">
-                    <div class="card-metrics card-metrics-static">
-                        <div class="card-metric">
-                            <div class="card-metric-title">Dine with us Again</div>
-                            <div class="card-metric-value">Yes: 230,648 </div>
-                            <div class="card-metric-change decrease">
-                                <i class="material-icons left">keyboard_arrow_down</i> 2%
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-chart">
-                    <canvas id="flush-area-chart-pink" height="100"></canvas>
-                </div>
-            </div>
 
-        </div>
-        <div class="col l3 m6 s12">
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Dine with us Again<i class="material-icons right">more_vert</i></span>
 
-            <div class="card">
-                <div class="card-stacked">
-                    <div class="card-metrics card-metrics-static">
-                        <div class="card-metric">
-                            <div class="card-metric-title">Server Prompt,Cortous Attention</div>
-                            <div class="card-metric-value">0.24%</div>
-                            <div class="card-metric-change decrease">
-                                <i class="material-icons left">keyboard_arrow_down</i> 9%
-                            </div>
-                        </div>
-                    </div>
+                    <h5>Yes: {{dineAgainPositive}} </h5>
+                    <h5>No: {{dineAgainNegative}} </h5>
+                    <p><a href="#">View Monthly Count</a></p>
+                </div>
+
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Today's Forms<i class="material-icons right">close</i></span>
+                    <br>
+                    <span class="card-title grey-text text-darken-4">Total: {{numberFormToday}}</span>
+                    <p><a href="#">View Monthly Count</a></p>
                 </div>
                 <div class="card-chart">
                     <canvas id="flush-area-chart-green" height="100"></canvas>
                 </div>
             </div>
+
+
+        </div>
+        <div class="col l3 m6 s12">
+
+            <div class="card">
+
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Quality of Food<i class="material-icons right">more_vert</i></span>
+
+                    <h5>Excellent: {{ExcellentQualityFood}}</h5>
+                    <h5>Poor: {{PoorQualityFood}} </h5>
+                    <p><a href="#">View Monthly Count</a></p>
+                </div>
+
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Today's Forms<i class="material-icons right">close</i></span>
+                    <br>
+                    <span class="card-title grey-text text-darken-4">Total: {{numberFormToday}}</span>
+                    <p><a href="#">View Monthly Count</a></p>
+                </div>
+                <div class="card-chart">
+                    <canvas id="flush-area-chart-yellow" height="100"></canvas>
+                </div>
+            </div>
+
+
 
         </div>
 

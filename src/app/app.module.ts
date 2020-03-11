@@ -16,6 +16,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ViewContainerComponent } from './view-container/view-container.component';
 import {FeedbackServiceService} from './services/feedback-service.service';
+import { StateCityComponent } from './statecity/statecity.component';
+import { AgeGroupsComponent } from './agegroups/agegroups.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import {FeedbackServiceService} from './services/feedback-service.service';
       HomeComponent,
       NavBarComponent,
       SideBarComponent,
-      ViewContainerComponent
+      ViewContainerComponent,
+      StateCityComponent,
+      AgeGroupsComponent
    ],
    imports: [
       BrowserModule,
