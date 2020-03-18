@@ -1,17 +1,37 @@
+<style>
+    .input-field input[type=date]:focus+label,
+    .input-field input[type=text]:focus+label,
+    .input-field input[type=email]:focus+label,
+    .input-field input[type=password]:focus+label {
+        color: #3f51b5;
+    }
+    
+    .input-field input[type=date]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=email]:focus,
+    .input-field input[type=password]:focus {
+        border-bottom: 2px solid #3f51b5;
+        box-shadow: none;
+    }
+</style>
+
+
 <div class="container">
+
     <div class="masonry row">
         <div class="col s12">
-            <h2>Dashboard</h2>
+            <h1>Dashboard</h1>
         </div>
 
         <div class="col s12">
             <div class="card">
 
                 <div class="card-action">
-                    <h6 style="text-align:center;">The count of the following items is as of January 24, 2020. Click on three dots for today's values</h6>
+                    <h3 style="text-align:center;">The count of the following items is as of January 24, 2020. Click on the three dots for today's values</h3>
                 </div>
             </div>
         </div>
+
 
         <div class="col l3 m6 s12">
 
@@ -19,9 +39,9 @@
             <div class="card">
 
                 <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">All Submitted Forms<i class="material-icons right">more_vert</i></span>
+                    <span class="card-title activator grey-text text-darken-4">Submitted Forms<i class="material-icons right">more_vert</i></span>
 
-                    <h5>Total: {{numberForm}}</h5>
+                    <h3>Total: {{numberForm}}</h3>
                     <br> <br>
                     <p><a href="#">View Monthly Count</a></p>
 
@@ -47,8 +67,8 @@
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Graciously Greeted<i class="material-icons right">more_vert</i></span>
 
-                    <h5>Yes: {{positiveGreeted}} </h5>
-                    <h5>No: {{negativeGreeted}}</h5>
+                    <h3>Yes: {{positiveGreeted}} </h3>
+                    <h3>No: {{negativeGreeted}}</h3>
                     <p><a href="#">View Monthly Count</a></p>
                 </div>
 
@@ -70,8 +90,8 @@
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Dine with us Again<i class="material-icons right">more_vert</i></span>
 
-                    <h5>Yes: {{dineAgainPositive}} </h5>
-                    <h5>No: {{dineAgainNegative}} </h5>
+                    <h3>Yes: {{dineAgainPositive}} </h3>
+                    <h3>No: {{dineAgainNegative}} </h3>
                     <p><a href="#">View Monthly Count</a></p>
                 </div>
 
@@ -95,8 +115,8 @@
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Quality of Food<i class="material-icons right">more_vert</i></span>
 
-                    <h5>Excellent: {{ExcellentQualityFood}}</h5>
-                    <h5>Poor: {{PoorQualityFood}} </h5>
+                    <h3>Excellent: {{ExcellentQualityFood}}</h3>
+                    <h3>Poor: {{PoorQualityFood}} </h3>
                     <p><a href="#">View Monthly Count</a></p>
                 </div>
 
@@ -114,6 +134,9 @@
 
 
         </div>
+
+
+
 
         <div class="col s12">
 
@@ -148,30 +171,9 @@
 
         </div>
 
-        <div class="col m6 s12">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">Updates</span>
-                    <ul class="badge-updates">
-                        <li>
-                            <span class="new badge red" data-badge-caption="refund"></span>
-                            <span class="message">45$ refunded to Alan Chang</span>
-                            <span class="time">14 minutes ago</span>
-                        </li>
-                        <li>
-                            <span class="new badge green" data-badge-caption="purchase"></span>
-                            <span class="message">45$ from Alan Chang</span>
-                            <span class="time">14 minutes ago</span>
-                        </li>
-                        <li>
-                            <span class="new badge red" data-badge-caption="refund"></span>
-                            <span class="message">45$ refunded to Alan Chang</span>
-                            <span class="time">14 minutes ago</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+
+
+
 
         <div class="col m6 s12">
             <div class="card">
@@ -203,70 +205,58 @@
 
     <div class="masonry row">
         <div class="col s12">
-            <h2>Customers Data</h2>
+            <h1>Forms Data</h1>
         </div>
 
-        <div class="col m6 s12">
-            <div class="card">
-                <div id='calendar'></div>
-            </div>
+        <div class=" input-field col m6 s12">
+            <input type="text" matInput (keyup)="applyFilter($event.target.value)" placeholder="Enter Search Item" />
         </div>
 
         <div class="col s12">
             <div class="card">
-                <table id="default-table-example" class="row-border" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let order of coffeeOrders">
-                            <td>{{ order.payload.doc.data().Name }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr *ngFor="let order of coffeeOrders">
-                            <td>{{ order.payload.doc.data().Email}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008/11/28</td>
-                            <td>$162,700</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class=" input-field">
+                    <input type="text" matInput (keyup)="applyFilter($event.target.value)" placeholder="Enter Search Item" />
+                </div>
+                <div class="row-border" cellspacing="0" width="100%">
+                    <mat-table [dataSource]="dataSource" matSort class="row-border">
+                        <ng-container matColumnDef="Name">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.Name}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="LastName">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.LastName}} </mat-cell>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="State">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.State}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="City">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.City}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="MealPeriod">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>MealPeriod</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.MealPeriod}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="MainCourse">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>MainCourse</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.MainCourse}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="QualityofFood">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>QualityofFood</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.QualityofFood}} </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                </div>
+                <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+                </mat-paginator>
             </div>
 
         </div>

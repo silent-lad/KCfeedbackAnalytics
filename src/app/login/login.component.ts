@@ -17,7 +17,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  
+  //Clear method that clears form and resets it after the form is submitted
+clearForm(){
+  console.log("Clear");
+
+  $('form').trigger("reset");
+}
 
   OnSubmit(){
     let data = this.AuthserviceService.form.value
@@ -28,15 +33,17 @@ export class LoginComponent implements OnInit {
     if (data['password'] == ''){
       alert('Please enter your password');
       return;
-    }
+    }else{
+    
+    
     this.AuthserviceService.doLogin(data)
     .then(res => {
-      console.log(res);
-      alert("Signed in!!!");
+      //alert("Signed in!!!");
       this.router.navigate(['/home']);
-    }, err => {
-      console.log(err);
-      alert("Saved Error!!!");
-    })
-  }
+     
+    });
+    //Data is passed to firebase and form is cleared and reset     
+    this.clearForm();
+   }
+}
 }

@@ -3,7 +3,8 @@ import * as $ from 'jquery';
 import M from 'materialize-css';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort, MatDialog,MatPaginator } from '@angular/material';
 import * as firebase from 'firebase/app';
 import { FeedbackServiceService } from '../services/feedback-service.service';
 import { Router } from '@angular/router';
@@ -15,18 +16,33 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  displayedColumns = ['Name','LastName','State','City', 'MealPeriod','MainCourse','QualityofFood'];
+  //dataSource: MatTableDataSource<any>;
+ dataSource = new MatTableDataSource();
+  members;
+  @ViewChild(MatPaginator,{ static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
   constructor(private feedbackserviceService: FeedbackServiceService, private router: Router) { }
   //Create a function to contain your call and initialize it on the ngOnInit() to call it when the view is loaded for the first time. Create a coffeeOrders variable to map the returned results from your database via subscribe().
   // We will use this to iterate over and display home.component.html
   ngOnInit() {
-    this.getCoffeeOrders(); this.getNumberofForm(); this.getAllPositiveDineAgain2(); this.getAllPositiveGreeted();this.getAllNegativeDineAgain2();
+ 
+    this.getNumberofForm(); this.getAllPositiveDineAgain2(); this.getAllPositiveGreeted();this.getAllNegativeDineAgain2();
     this.getAllNegativeGreeted();  this.getAllExcellentQualityFood();  this.getAllPoorQualityFood(); this.getNumberofFormToday();
+    return this.feedbackserviceService.getNumberofForms().subscribe(res => this.dataSource.data = res);
   }
-  coffeeOrders;
-  getCoffeeOrders = () =>
-    this.feedbackserviceService
-      .getCustomerFeedback()
-      .subscribe(res => (this.coffeeOrders = res));
+ 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+ 
   /*Store the count of documents as a separate property and update that as you add/remove documents.*/
   /*An Observable doesn't have a promise-like method as then. In your service you are performing an http call which returns an Observable and you map this Observable to another Observable.*/
 

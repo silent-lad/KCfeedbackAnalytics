@@ -20,18 +20,18 @@ export class AgeGroupsComponent implements OnInit {
   constructor(private feedbackserviceService: FeedbackServiceService, private router: Router) { }
 
   ngOnInit() {
-    this.getAgeGroup34();
+   // this.getAgeGroup34();
   }
-  AgeGroup1;
+  /*AgeGroup1;
   getAgeGroup34 = () =>
     this.feedbackserviceService.getAgeGroup().subscribe(snap => {
       snap.forEach(doc => {
 //do a count that shows age group 34-bellow in since January to April or May
 
 var count:number = 0;
-         console.log(doc.id, ' => ', doc.data());
+       //  console.log(doc.id, ' => ', doc.data());
 
 
       });
-    });
+    });*/
 }

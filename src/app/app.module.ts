@@ -18,7 +18,20 @@ import { ViewContainerComponent } from './view-container/view-container.componen
 import {FeedbackServiceService} from './services/feedback-service.service';
 import { StateCityComponent } from './statecity/statecity.component';
 import { AgeGroupsComponent } from './agegroups/agegroups.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import{MatTableModule,MatFormFieldModule,MatInputModule,MatSortModule,MatDialogModule,MatButtonModule}from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
 
+import {MatSortModule} from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+	
+//import { MaterialModule } from './@angular/material';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+//import { MatTableDataSourceModule} from '@angular/material/tabledatasource';
+import { DataTableComponent } from './DataTable/DataTable.component';
 
 @NgModule({
    declarations: [
@@ -29,17 +42,26 @@ import { AgeGroupsComponent } from './agegroups/agegroups.component';
       SideBarComponent,
       ViewContainerComponent,
       StateCityComponent,
-      AgeGroupsComponent
+      AgeGroupsComponent,
+      DataTableComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
       ReactiveFormsModule,
       FormsModule,
+      MatTableModule,
+      MatSortModule,
+      MatDialogModule,
+      MatButtonModule,
+      MatFormFieldModule,
+      MatPaginatorModule,
+      MatInputModule,
       AngularFireModule.initializeApp(environment.firebaseConfig,
       ),
       AngularFirestoreModule,
-      AngularFireAuthModule
+      AngularFireAuthModule,
+      BrowserAnimationsModule
    ],
    providers: [
       AuthserviceService,

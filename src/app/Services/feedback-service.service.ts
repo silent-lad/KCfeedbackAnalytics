@@ -59,7 +59,7 @@ export class FeedbackServiceService {
   }
 
   getTodayNumberofForms(){
- return this.firestore.collection("Form", ref => ref.where("FeedbackDate", ">=", new Date("2020-03-10 00:00"))).valueChanges();
+ return this.firestore.collection("Form", ref => ref.where("FeedbackDate", ">=", new Date("2020-05-07 00:00"))).valueChanges();
  //"3/10/2020"
  //.where("publishedAt", ">=", new Date("2018-01-01 00:00"))
   // .orderBy("timestamp", "desc")

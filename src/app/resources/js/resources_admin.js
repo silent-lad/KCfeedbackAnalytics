@@ -1,14 +1,4 @@
-/*!
- * Admin v1.0.2
- * Materialize theme
- * http://materializecss.com/themes.html
- * Personal Use License
- * by Alan Chang
- */
 
-/********************
- * Helper Functions *
- ********************/
 var debounce = function(fn, duration) {
     var timeout;
     return function() {
@@ -966,8 +956,8 @@ function initializeTable() {
             'data': data,
             'columnDefs': [{
                 'targets': 0,
-                'searchable': false,
-                'orderable': false,
+                'searchable': true,
+                'orderable': true,
                 'className': 'dataTables-checkbox-column',
                 'render': function(data, type, full, meta) {
                     return '<label><input class="filled-in" type="checkbox" name="id[]" value="' +
@@ -1014,7 +1004,7 @@ function initializeTable() {
      ********************/
 
     var table = $('#default-table-example').DataTable({
-        'ajax': 'https://api.myjson.com/bins/1us28',
+        'ajax': '',
         'language': {
             'search': '',
             'searchPlaceholder': 'Enter search term'
