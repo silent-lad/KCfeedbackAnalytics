@@ -9,27 +9,30 @@ import * as firebase from 'firebase/app';
 import { FeedbackServiceService } from '../services/feedback-service.service';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-
+export interface Item { }
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  private itemsCollection: AngularFirestoreCollection<Item>;
+  items: Observable<Item[]>;
+
 
   displayedColumns = ['Name','LastName','State','City', 'MealPeriod','MainCourse','QualityofFood'];
   //dataSource: MatTableDataSource<any>;
  dataSource = new MatTableDataSource();
-  members;
   @ViewChild(MatPaginator,{ static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
-  constructor(private feedbackserviceService: FeedbackServiceService, private router: Router) { }
+  constructor(private feedbackserviceService: FeedbackServiceService, private router: Router, private firestore: AngularFirestore) { }
   //Create a function to contain your call and initialize it on the ngOnInit() to call it when the view is loaded for the first time. Create a coffeeOrders variable to map the returned results from your database via subscribe().
   // We will use this to iterate over and display home.component.html
   ngOnInit() {
  
     this.getNumberofForm(); this.getAllPositiveDineAgain2(); this.getAllPositiveGreeted();this.getAllNegativeDineAgain2();
     this.getAllNegativeGreeted();  this.getAllExcellentQualityFood();  this.getAllPoorQualityFood(); this.getNumberofFormToday();
+    this.getGreetingPositivebyToday();
     return this.feedbackserviceService.getNumberofForms().subscribe(res => this.dataSource.data = res);
   }
  
@@ -41,6 +44,20 @@ export class HomeComponent implements OnInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+
+  GetPositiveGreetingToday2(){
+    //return this.firestore.collection("Form", ref => 
+      // return this.firestore.collection("Form", ref => ref.where("GraciouslyGreetedPositive", "==", true)).("Form", ref => ref.where("FeedbackDate", ">=", new Date("2020-05-07 00:00"))).valueChanges();
+    //return firebase.firestore().collection("Form").where("GraciouslyGreetedPositive","==", true).where("FeedbackDate", "==", new Date("2020-05-07 00:00")).get();
+  
+
+    //can do this
+    this.itemsCollection = this.firestore.collection<Item>("Form", ref => ref.where("GraciouslyGreetedPositive", "==", 
+true).where("Name", "==", "Steven"))
+return this.items = this.itemsCollection.valueChanges();
+   
   }
  
   /*Store the count of documents as a separate property and update that as you add/remove documents.*/
@@ -79,6 +96,21 @@ export class HomeComponent implements OnInit {
         PoorQualityFood: number = 0;
         getAllPoorQualityFood = () =>
           this.feedbackserviceService.getPoorQualityCountAll().subscribe(values => (this.PoorQualityFood = values.length));
+          //Getting values by todays date
+
+    
+      GreetingPOToday;
+        getGreetingPositivebyToday = () =>
+          this.feedbackserviceService.GetPositiveGreetingToday().subscribe(values => (this.GreetingPOToday = values.length));
+        //var GreetingPOToday =  querySnapshot.size ();
+          
+            
+            // check and do something with the data here.
+            // get the data of all the documents into an array
+/*querySnapshot.docs.map(function (documentSnapshot) {
+  return documentSnapshot.data();
+});*/
+         
   
   
 }

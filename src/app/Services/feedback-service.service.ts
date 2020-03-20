@@ -3,16 +3,19 @@ import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import 'firebase/firestore';
+
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 
-
+export interface Item {number: 0 }
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackServiceService {
 
-
+  private itemsCollection: AngularFirestoreCollection<Item>;
+  items: Observable<Item[]>;
   constructor(private firestore: AngularFirestore) { }
   
   
@@ -34,8 +37,6 @@ export class FeedbackServiceService {
   getDineAgainPositiveCountAll2() {
     // Create a reference to the cities collection
     return this.firestore.collection("Form", ref => ref.where("DineWithUsAgainPositive", "==", true)).snapshotChanges();//
-
-
   }
 
   getGraciouslyGreetedPositiveCountAll() {
@@ -66,8 +67,37 @@ export class FeedbackServiceService {
   //new DateTime.now())
   //return this.firestore.collection("Form", ref => ref.orderBy("timestamp", "desc")).snapshotChanges();
   }
-
+   GetPositiveGreetingToday(){
+    //return this.firestore.collection("Form", ref => 
+      // return this.firestore.collection("Form", ref => ref.where("GraciouslyGreetedPositive", "==", true)).("Form", ref => ref.where("FeedbackDate", ">=", new Date("2020-05-07 00:00"))).valueChanges();
+    //return firebase.firestore().collection("Form").where("GraciouslyGreetedPositive","==", true).where("FeedbackDate", "==", new Date("2020-05-07 00:00")).get();
   
+
+    //can do this
+    this.itemsCollection = this.firestore.collection<Item>("Form", ref => ref.where("GraciouslyGreetedPositive", "==", 
+true).where("Name", "==", "Steven"))
+return this.items = this.itemsCollection.valueChanges();
+   
+  }
+/*
+    .where("age", "<=", 30)
+    .where("age", ">=", 20)
+    .get()
+    .then(snap => {
+        snap.forEach(doc => {
+            console.log(doc.data());
+        });
+    });*/
+
+
+
+   // Get all the user's comments, no matter how deeply nested
+   // this.comments$ = afs.collectionGroup('Comments', ref => ref.where('user', '==', userId))
+//.valueChanges({ idField });
+    //citiesRef.where("state", "==", "CO").where("name", "==", "Denver");
+//citiesRef.where("state", "==", "CA").where("population", "<", 1000000);
+
+//
     //firebase.firestore().collection('reservations').where('dateTime', '>=', new Date()).get()
   }
 
@@ -82,8 +112,3 @@ export class FeedbackServiceService {
     // just one field select("AgeGroup")
 
   
-
-
-
-
-
