@@ -8,14 +8,15 @@ import 'firebase/firestore';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 
-export interface Item {number: 0 }
+export interface Item {GraciouslyGreetedPositive: boolean;
+  Name: string;}
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackServiceService {
 
   private itemsCollection: AngularFirestoreCollection<Item>;
-  items: Observable<Item[]>;
+  form: Observable<Item[]>;
   constructor(private firestore: AngularFirestore) { }
   
   
@@ -76,7 +77,7 @@ export class FeedbackServiceService {
     //can do this
     this.itemsCollection = this.firestore.collection<Item>("Form", ref => ref.where("GraciouslyGreetedPositive", "==", 
 true).where("Name", "==", "Steven"))
-return this.items = this.itemsCollection.valueChanges();
+return this.form = this.itemsCollection.valueChanges();
    
   }
 /*

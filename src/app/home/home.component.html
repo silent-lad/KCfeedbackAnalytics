@@ -71,7 +71,7 @@
                 <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4">Today's Values<i class="material-icons right">close</i></span>
                     <h3>Yes: {{items}} </h3>
-                    <h3>No: {{negativeGreeted}}</h3>
+                    <h3>No: {{GreetingPOToday}}</h3>
                     <p><a href="#">View Monthly Count</a></p>
                 </div>
                 <div class="card-chart">
@@ -175,87 +175,99 @@
         <div class="col m6 s12">
             <div class="card">
                 <div class="card-content">
-                    <div class="card-title">Stacked Bar Chart</div>
+                    <div class="card-title">What customers think about food prices?</div>
                     <div class="chart-wrapper">
-                        <canvas id="stacked-bar-chart" width="400" height="400"></canvas>
+                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                      </canvas>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <div class="col m6 s12">
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title">Devices</span>
-                    <div class="row row-vertical-center">
-                        <div class="col s6">
-                            <canvas id="doughnut-chart" width="50%"></canvas>
-                        </div>
-                        <div class="col s6">
-                            <div class="chart-legend-wrapper"></div>
+                    <div class="card-title">Stacked Bar Chart</div>
+                    <div class="chart-wrapper">
+                        <canvas id="valueBarsCanvas">{{ valueBarsChart }}</canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m6 s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">What People think about quality of prices?</span>
+                        <div class="row row-vertical-center">
+                            <div class="col s6">
+                                <canvas id="doughnut-chart" width="50%"></canvas>
+                            </div>
+                            <div class="col s6">
+                                <div class="chart-legend-wrapper"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="masonry row">
-        <div class="col s12">
-            <h1>Forms Data</h1>
-        </div>
-
-        <div class=" input-field col m6 s12">
-            <input type="text" matInput (keyup)="applyFilter($event.target.value)" placeholder="Enter Search Item" />
-        </div>
-
-        <div class="col s12">
-            <div class="card">
-                <div class=" input-field">
-                    <input type="text" matInput (keyup)="applyFilter($event.target.value)" placeholder="Enter Search Item" />
-                </div>
-                <div class="row-border" cellspacing="0" width="100%">
-                    <mat-table [dataSource]="dataSource" matSort class="row-border">
-                        <ng-container matColumnDef="Name">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.Name}} </mat-cell>
-                        </ng-container>
-
-                        <ng-container matColumnDef="LastName">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.LastName}} </mat-cell>
-                        </ng-container>
-
-
-                        <ng-container matColumnDef="State">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.State}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="City">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.City}} </mat-cell>
-                        </ng-container>
-
-                        <ng-container matColumnDef="MealPeriod">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header>MealPeriod</mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.MealPeriod}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="MainCourse">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header>MainCourse</mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.MainCourse}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="QualityofFood">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header>QualityofFood</mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.QualityofFood}} </mat-cell>
-                        </ng-container>
-                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                    </mat-table>
-                </div>
-                <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
-                </mat-paginator>
+        <div class="masonry row">
+            <div class="col s12">
+                <h1>Forms Data</h1>
             </div>
 
+            <div class=" input-field col m6 s12">
+                <input type="text" matInput (keyup)="applyFilter($event.target.value)" placeholder="Enter Search Item" />
+            </div>
+
+            <div class="col s12">
+                <div class="card">
+                    <div class=" input-field">
+                        <input type="text" matInput (keyup)="applyFilter($event.target.value)" placeholder="Enter Search Item" />
+                    </div>
+                    <div class="row-border" cellspacing="0" width="100%">
+                        <mat-table [dataSource]="dataSource" matSort class="row-border">
+                            <ng-container matColumnDef="Name">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.Name}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="LastName">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.LastName}} </mat-cell>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="State">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.State}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="City">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.City}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="MealPeriod">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>MealPeriod</mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.MealPeriod}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="MainCourse">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>MainCourse</mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.MainCourse}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="QualityofFood">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>QualityofFood</mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.QualityofFood}} </mat-cell>
+                            </ng-container>
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+                    </div>
+                    <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+                    </mat-paginator>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>

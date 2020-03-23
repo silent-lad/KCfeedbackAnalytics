@@ -32,6 +32,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 //import { MatTableDataSourceModule} from '@angular/material/tabledatasource';
 import { DataTableComponent } from './DataTable/DataTable.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
    declarations: [
@@ -43,7 +44,8 @@ import { DataTableComponent } from './DataTable/DataTable.component';
       ViewContainerComponent,
       StateCityComponent,
       AgeGroupsComponent,
-      DataTableComponent
+      DataTableComponent,
+     
    ],
    imports: [
       BrowserModule,
@@ -57,6 +59,7 @@ import { DataTableComponent } from './DataTable/DataTable.component';
       MatFormFieldModule,
       MatPaginatorModule,
       MatInputModule,
+      ChartsModule,
       AngularFireModule.initializeApp(environment.firebaseConfig,
       ),
       AngularFirestoreModule,

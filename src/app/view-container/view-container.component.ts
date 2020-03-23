@@ -21,10 +21,10 @@ content: string;
 
     console.log("initAdmin");
 
-    window["admin"]();
+   //window["admin"]();
     window["dashboard"]();
     window["initAdmin"]();
-    window["initializeTable"]();
+    
   }
 
 }

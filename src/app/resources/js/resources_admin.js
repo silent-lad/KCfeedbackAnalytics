@@ -1,4 +1,3 @@
-
 var debounce = function(fn, duration) {
     var timeout;
     return function() {
@@ -214,12 +213,6 @@ var areaOptions = {
 };
 
 var flushChartOptions = Object.assign({}, areaOptions);
-flushChartOptions.hover = {
-    hover: {
-        mode: 'index',
-        intersect: false
-    }
-};
 flushChartOptions.legend = { display: false };
 flushChartOptions.scales = {
     xAxes: [{
@@ -396,7 +389,7 @@ function admin() {
     Chart.defaults.global.legend.display = false;
 
     // Candlestick styles
-    Chart.defaults.candlestick.scales.xAxes[0].gridLines = { display: false };
+    Chart.defaults.candlestick.scales.xAxes[0].gridLines = { display: true };
     // Chart.defaults.candlestick.scales.yAxes[0].gridLines = {display: false};
 
     // Point styles
@@ -795,12 +788,12 @@ function admin() {
                 borderColor: chartColorBlue,
             }, {
                 label: 'Yellow',
-                data: [4, 2, 1, 2, 4, 6],
+                data: [],
                 backgroundColor: chartColorYellow,
                 borderColor: chartColorYellow,
             }, {
                 label: 'Pink',
-                data: [5, 10, 8, 7, 4, 9],
+                data: [],
                 backgroundColor: chartColorPink,
                 borderColor: chartColorPink,
             }]
