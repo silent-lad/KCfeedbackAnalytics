@@ -111,6 +111,7 @@ export class HomeComponent implements OnInit {
 
           var price = item.prices;
           this.dataArray.push(price);
+          this.barChart.update();
         });
 
         this.barChart = new Chart(this.valueBarsCanvas.nativeElement, {
